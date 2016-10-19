@@ -1,2 +1,2 @@
-A national flag Mstching game
+## A national flag Mstching game
 游戏玩法：点击开始按钮后,进度条会启动进行计时.鼠标点击卡牌获取国旗,国旗相同的卡牌会进行配对,同时时间清零.在规定时间内未找到配对国旗,则游戏失败。
