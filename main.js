@@ -2,13 +2,14 @@
 * @Author: taochen
 * @Date:   2016-10-17 17:37:39
 * @Last Modified by:   taochen
-* @Last Modified time: 2016-10-22 11:39:14
+* @Last Modified time: 2016-10-24 14:16:50
 */
 
 var row = 6
 var col = 6
 var $gameArea = $('#gameArea')
 var imageSrc = []
+var $click1
 var noClick = false
 var duration = 1000
 
@@ -17,7 +18,7 @@ function createGrid(){
   const colSize = $gameArea.height()/col
   for (var i = 0;i < row; i++) {
     for (var j = 0;j < col; j++) {
-      var $div = $('<div/>').width(rowSize).height(colSize).appendTo($gameArea)
+      var $div = $('<div/>').width(rowSize).height(colSize).appendTo($gameArea).addClass('grid')
       if (j !== 0) {
         $div.css('border-left','none')
       }
@@ -28,18 +29,58 @@ function createGrid(){
   }
 }
 
+function initImage() {
+  var imgNum = row * col/2
+  for (var i = 0; i < imgNum; i++) {
+    var src = './image/flag'+(i%18+1)+'.png'
+    imageSrc.push(src)
+    imageSrc.push(src)
+  }
+
+  // shuffle the imageSrc Array
+  imageSrc = _.shuffle(imageSrc)
+
+  // fill images
+  const backImageSrc = './image/backimage.png'
+  imageSrc.forEach((src, index) => {
+    var $flagImage = $('<img/>').attr('src', src).addClass('flagImage')
+    var $backImage = $('<img/>').attr('src', backImageSrc).addClass('backImage')
+    $('.grid').eq(index).append($flagImage, $backImage)
+  })
+
+  // add listener,在父元素上做事件代理，避免给每个子元素都加事件处理器
+  $gameArea.on("click", function(evt) {
+    if (noClick) return
+    var $target = $(evt.target)
+    if ($target.hasClass('backImage')) {
+      $target.hide()
+      var $frontImage = $target.siblings()
+      if($click1){
+        noClick = true
+        if($frontImage.attr('src') === $click1.attr('src')){
+          setTimeout(() => {
+            $frontImage.remove()
+            $click1.remove()
+            $click1 = null
+            noClick = false
+          }, duration)
+        }else{
+          setTimeout(() => {
+            $target.show()
+            $click1.siblings().show()
+            $click1 = null
+            noClick = false
+          }, duration)
+        }
+      }else{
+        $click1 = $frontImage
+      }
+    }
+  })
+}
+
 createGrid()
-
-// var flagIndex = _.shuffle([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18]);
-
-// for(var i = 0; i < width * height; i++) {
-//   var $flag = $('<div></div>');
-//   var flagscr = 'url(./image/flag'+flagIndex[i]+'.png)';
-//   $('#gameArea').append($flag);
-//   $flag.css('background-image',flagscr);
-//   // 给每个国旗加class用于后期索引是否配对成功
-//   $flag.attr('class','flag'+flagIndex[i]);
-// }
+initImage()
 
 
 
