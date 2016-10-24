@@ -2,7 +2,7 @@
 * @Author: taochen
 * @Date:   2016-10-17 17:37:39
 * @Last Modified by:   taochen
-* @Last Modified time: 2016-10-25 04:54:52
+* @Last Modified time: 2016-10-25 05:26:02
 */
 
 var row = 6
@@ -12,6 +12,7 @@ var imageSrc = []
 var $click1
 var noClick = false
 var duration = 1000
+var score = 0
 
 function createGrid(){
   const rowSize = $gameArea.width()/row
@@ -32,6 +33,7 @@ function createGrid(){
 function initImage() {
   var imgNum = row * col/2
   for (var i = 0; i < imgNum; i++) {
+    console.log(i)
     var src = './image/flag'+(i%18+1)+'.png'
     imageSrc.push(src)
     imageSrc.push(src)
@@ -39,9 +41,8 @@ function initImage() {
 
   // shuffle the imageSrc Array
   imageSrc = _.shuffle(imageSrc)
-
   // fill images
-  const backImageSrc = './image/backimage.png'
+  var backImageSrc = './image/backimage.png'
   imageSrc.forEach(function(src, index) {
     var $flagImage = $('<img/>').attr('src', src).addClass('flagImage')
     var $backImage = $('<img/>').attr('src', backImageSrc).addClass('backImage')
@@ -62,6 +63,8 @@ $gameArea.on("click", function(evt) {
         setTimeout(function(){
           $frontImage.remove()
           $click1.remove()
+          score+=10
+          $('#score').text('score:'+ score)
           $click1 = null
           noClick = false
         }, duration)
@@ -79,6 +82,7 @@ $gameArea.on("click", function(evt) {
   }
 })
 
+// 游戏模式切换
 $('#option1').on('click',function(){
   $('#option1').parent().addClass('active')
   $('#option2').parent().removeClass('active')
@@ -91,6 +95,7 @@ $('#option2').on('click',function(){
   $('.backImage').css('opacity','0.7')
 })
 
+// 难度选择切换
 $('#option3').on('click',function(){
   $('#option3').parent().addClass('active')
   $('#option4').parent().removeClass('active')
@@ -99,6 +104,9 @@ $('#option3').on('click',function(){
   col = 4
   $click1 = null
   noClick = false
+  imageSrc = []
+  score = 0
+  $('#score').text('score:0')
   $('#gameArea > div').remove()
   createGrid()
   initImage()
@@ -115,6 +123,9 @@ $('#option4').on('click',function(){
   col = 6
   $click1 = null
   noClick = false
+  imageSrc = []
+  score = 0
+  $('#score').text('score:0')
   $('#gameArea > div').remove()
   createGrid()
   initImage()
@@ -131,6 +142,9 @@ $('#option5').on('click',function(){
   col = 8
   $click1 = null
   noClick = false
+  imageSrc = []
+  score = 0
+  $('#score').text('score:0')
   $('#gameArea > div').remove()
   createGrid()
   initImage()
