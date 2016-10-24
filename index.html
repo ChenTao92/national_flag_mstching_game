@@ -2,7 +2,7 @@
 * @Author: taochen
 * @Date:   2016-10-17 17:36:49
 * @Last Modified by:   taochen
-* @Last Modified time: 2016-10-24 05:08:31
+* @Last Modified time: 2016-10-25 03:05:37
  -->
 
 
@@ -17,23 +17,37 @@
   <script src="./js/jquery-3.1.1.min.js"></script>
   <!-- 加载lodash工具库 -->
   <script src="./js/lodash-3.10.1.js"></script>
+  <link rel="stylesheet" href="./css/buttons.css">
   <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
   <div id="container">
     <div class="progress-bar"></div>
+
     <div id="mainArea">
-      <div id="gameArea"></div>
+
+      <div id="gameArea-container">
+        <div id="gameArea"></div>
+      </div>
+      
       <div id="infoArea">
+
         <h2 id="gameName">Mstching game</h2>
-        <p>游戏说明</p>
-        <p>点击开始按钮后,进度条会启动进行计时.鼠标点击卡牌获取国旗,国旗相同的卡牌会进行配对,同时时间清零.在规定时间内未找到配对国旗,则游戏失败.</p>
-        <p>游戏模式</p>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default">正常模式</button>
-          <button type="button" class="btn btn-default">作弊模式</button>
+        
+        <h3><strong>游戏说明</strong><span id="score">score: 0</span></h3>
+        <p id="description">点击开始按钮后,进度条会启动进行计时.鼠标点击卡牌获取国旗,国旗相同的卡牌会进行配对,同时时间清零.在规定时间内未找到配对国旗,则游戏失败.</p>
+
+        <h3><strong>游戏模式</strong></h3>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked>正常模式
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="options" id="option2" autocomplete="off">作弊模式
+          </label>
         </div>
-        <p>难度选择</p>
+
+        <h3><strong>难度选择</strong></h3>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-primary active">
             <input type="radio" name="options" id="option1" autocomplete="off" checked> 简单
@@ -45,11 +59,9 @@
             <input type="radio" name="options" id="option3" autocomplete="off"> 困难
           </label>
         </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default">简单</button>
-          <button type="button" class="btn btn-default">普通</button>
-          <button type="button" class="btn btn-default">困难</button>
-        </div>
+
+        <a href="#" data-icon="✰" class="button pink serif skew glossy">play</a>
+        
       </div>
     </div>
   </div>

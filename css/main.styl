@@ -1,17 +1,19 @@
 body
   background-image: url('../image/bg.jpg')
   background-size: cover
+  font-family: "Overlock", "Hiragino Sans GB", "Microsoft YaHei", sans-serif
 
 #container
   position: absolute
   width: 1000px
-  height: 600px
+  height: 630px
   left: 0
   right: 0
   top: 0
   bottom: 0
   margin: auto
-  border: solid 2px black
+  border: solid 4px #C2D6D6
+  border-radius: 5px
 
 .progress-bar
   background-color: #fff
@@ -31,28 +33,74 @@ body
   display: flex
   justify-content: space-around
   align-items: center
-  
-#gameArea
-  width: 500px
-  height: 500px
-  margin: auto
-  border: solid 2px black
-  display: flex
-  flex-wrap: wrap
-  > div
-    box-sizing: border-box
-    border: solid 1px black
-    position: relative
-    img
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-    .backImage
-      opacity: 0.7
-      background: gray
-      z-index: 100
+ 
+#gameArea-container
+  border: solid 5px #663308
+  border-radius: 19px
+  margin-top: 22px
+  #gameArea
+    width: 530px
+    height: 530px
+    margin: auto
+    border: solid 11px #FFF
+    border-radius: 15px
+    display: flex
+    flex-wrap: wrap
+    > div
+      box-sizing: border-box
+      border: solid 1px #CEC5D0
+      position: relative
+      img
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+      .backImage
+        opacity: 0.7
+        background: gray
+        z-index: 100
       
 #infoArea
   width: 400px
+  > #gameName
+    font-family: Comic Sans MS
+    font-size: 37px
+    text-shadow: 5px 5px 5px #807FF7
+    color: #f69
+    cursor: default
+    -webkit-transition: color 1s linear
+    -moz-transition: color 1s linear
+    -ms-transition: color 1s linear
+    -o-transition: color 1s linear
+    transition: color 1s linear
+    position: relative;
+    left: 49px;
+    top: -19px;
+  > #gameName:hover
+    color: white
+  > h3 > #score
+    font-family: Comic Sans MS
+    color: #FFF
+    padding-left: 70px
+    font-size: 27px    
+  > #description
+    width: 340px
+    font-size: 19px
+    font-weight: 600
+    line-height: 36px
+    border: solid 3px #663308
+    -webkit-border-radius: 10px
+    -moz-border-radius: 10px
+    border-radius: 10px
+    padding: 5px
+  > :nth-child(6)
+    position: relative;
+    top: 22px;
+  > .glossy
+    text-decoration: none
+    position: relative;
+    left: 30px;
+    top: -50px;
+
+

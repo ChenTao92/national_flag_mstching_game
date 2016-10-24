@@ -1,17 +1,19 @@
 body {
   background-image: url("../image/bg.jpg");
   background-size: cover;
+  font-family: "Overlock", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 #container {
   position: absolute;
   width: 1000px;
-  height: 600px;
+  height: 630px;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   margin: auto;
-  border: solid 2px #000;
+  border: solid 4px #c2d6d6;
+  border-radius: 5px;
 }
 .progress-bar {
   background-color: #fff;
@@ -32,31 +34,82 @@ body {
   justify-content: space-around;
   align-items: center;
 }
-#gameArea {
-  width: 500px;
-  height: 500px;
+#gameArea-container {
+  border: solid 5px #663308;
+  border-radius: 19px;
+  margin-top: 22px;
+}
+#gameArea-container #gameArea {
+  width: 530px;
+  height: 530px;
   margin: auto;
-  border: solid 2px #000;
+  border: solid 11px #fff;
+  border-radius: 15px;
   display: flex;
   flex-wrap: wrap;
 }
-#gameArea > div {
+#gameArea-container #gameArea > div {
   box-sizing: border-box;
-  border: solid 1px #000;
+  border: solid 1px #cec5d0;
   position: relative;
 }
-#gameArea > div img {
+#gameArea-container #gameArea > div img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
-#gameArea > div .backImage {
+#gameArea-container #gameArea > div .backImage {
   opacity: 0.7;
   background: #808080;
   z-index: 100;
 }
 #infoArea {
   width: 400px;
+}
+#infoArea > #gameName {
+  font-family: Comic Sans MS;
+  font-size: 37px;
+  text-shadow: 5px 5px 5px #807ff7;
+  color: #f69;
+  cursor: default;
+  -webkit-transition: color 1s linear;
+  -moz-transition: color 1s linear;
+  -ms-transition: color 1s linear;
+  -o-transition: color 1s linear;
+  transition: color 1s linear;
+  position: relative;
+  left: 49px;
+  top: -19px;
+}
+#infoArea > #gameName:hover {
+  color: #fff;
+}
+#infoArea > h3 > #score {
+  font-family: Comic Sans MS;
+  color: #fff;
+  padding-left: 70px;
+  font-size: 27px;
+}
+#infoArea > #description {
+  width: 340px;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 36px;
+  border: solid 3px #663308;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 5px;
+}
+#infoArea > :nth-child(6) {
+  position: relative;
+  top: 22px;
+}
+#infoArea > .glossy {
+  text-decoration: none;
+  position: relative;
+  left: 30px;
+  top: -50px;
 }
