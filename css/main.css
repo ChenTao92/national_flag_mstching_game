@@ -61,7 +61,7 @@ body {
   height: 100%;
 }
 #gameArea-container #gameArea > div .backImage {
-  opacity: 0.7;
+  opacity: 1;
   background: #808080;
   z-index: 100;
 }
