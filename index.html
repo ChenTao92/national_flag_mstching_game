@@ -2,7 +2,7 @@
 * @Author: taochen
 * @Date:   2016-10-17 17:36:49
 * @Last Modified by:   taochen
-* @Last Modified time: 2016-10-24 17:34:36
+* @Last Modified time: 2016-10-24 05:08:31
  -->
 
 
@@ -13,16 +13,47 @@
   <title>国旗对对碰游戏</title>
   <!-- 加载bootstrap来提供样式-->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-
-  <link rel="stylesheet" href="main.css">
-  <script src="jquery-3.1.1.min.js"></script>
-  <script src="lodash-3.10.1.js"></script>
+  <!-- 加载jQuery -->
+  <script src="./js/jquery-3.1.1.min.js"></script>
+  <!-- 加载lodash工具库 -->
+  <script src="./js/lodash-3.10.1.js"></script>
+  <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
   <div id="container">
-    <div id="gameArea"></div>
+    <div class="progress-bar"></div>
+    <div id="mainArea">
+      <div id="gameArea"></div>
+      <div id="infoArea">
+        <h2 id="gameName">Mstching game</h2>
+        <p>游戏说明</p>
+        <p>点击开始按钮后,进度条会启动进行计时.鼠标点击卡牌获取国旗,国旗相同的卡牌会进行配对,同时时间清零.在规定时间内未找到配对国旗,则游戏失败.</p>
+        <p>游戏模式</p>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">正常模式</button>
+          <button type="button" class="btn btn-default">作弊模式</button>
+        </div>
+        <p>难度选择</p>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked> 简单
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="options" id="option2" autocomplete="off"> 普通
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="options" id="option3" autocomplete="off"> 困难
+          </label>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">简单</button>
+          <button type="button" class="btn btn-default">普通</button>
+          <button type="button" class="btn btn-default">困难</button>
+        </div>
+      </div>
+    </div>
   </div>
   
-  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="./js/main.js"></script>
 </body>
 </html>

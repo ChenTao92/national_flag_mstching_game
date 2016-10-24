@@ -2,7 +2,7 @@
 * @Author: taochen
 * @Date:   2016-10-17 17:37:39
 * @Last Modified by:   taochen
-* @Last Modified time: 2016-10-24 14:16:50
+* @Last Modified time: 2016-10-24 18:02:20
 */
 
 var row = 6
@@ -42,7 +42,7 @@ function initImage() {
 
   // fill images
   const backImageSrc = './image/backimage.png'
-  imageSrc.forEach((src, index) => {
+  imageSrc.forEach(function(src, index) {
     var $flagImage = $('<img/>').attr('src', src).addClass('flagImage')
     var $backImage = $('<img/>').attr('src', backImageSrc).addClass('backImage')
     $('.grid').eq(index).append($flagImage, $backImage)
@@ -58,14 +58,14 @@ function initImage() {
       if($click1){
         noClick = true
         if($frontImage.attr('src') === $click1.attr('src')){
-          setTimeout(() => {
+          setTimeout(function(){
             $frontImage.remove()
             $click1.remove()
             $click1 = null
             noClick = false
           }, duration)
         }else{
-          setTimeout(() => {
+          setTimeout(function(){
             $target.show()
             $click1.siblings().show()
             $click1 = null
@@ -76,11 +76,30 @@ function initImage() {
         $click1 = $frontImage
       }
     }
+
+
   })
 }
+
 
 createGrid()
 initImage()
 
+// NProgress.start();
+// NProgress.done();
+// function startTimer(){
+//   $('<span></span>').appendTo('.progress-bar');
+//   $('.progress-bar span').width(0);
+//   $('.progress-bar span').width('100%');
+//   setTimeout(function(){ 
+//     $('.progress-bar span').remove();
+//     $(".gameFailure").css('display','block');
+//   },20000);
+// }
 
+
+// function clearTimer(){
+//   clearTimeout(timeOutId);
+//   $('.progress-bar span').remove();
+// }
 
