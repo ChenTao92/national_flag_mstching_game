@@ -2,7 +2,7 @@
 * @Author: taochen
 * @Date:   2016-10-17 17:37:39
 * @Last Modified by:   taochen
-* @Last Modified time: 2016-10-26 02:33:53
+* @Last Modified time: 2016-10-26 03:07:30
 */
 
 var row = 6
@@ -134,12 +134,8 @@ $('#option3').on('click',function(){
   $('#option5').parent().removeClass('active')
   row = 4
   col = 4
-  $click1 = null
-  noClick = false
-  imageSrc = []
-  score = 0
-  $('#score').text('score: 0')
   $('#gameArea > div').remove()
+  imageSrc = []
   createGrid()
   initImage()
   if($('#option2').parent().hasClass('active')){
@@ -154,12 +150,8 @@ $('#option4').on('click',function(){
   $('#option5').parent().removeClass('active')
   row = 6
   col = 6
-  $click1 = null
-  noClick = false
-  imageSrc = []
-  score = 0
-  $('#score').text('score: 0')
   $('#gameArea > div').remove()
+  imageSrc = []
   createGrid()
   initImage()
   if($('#option2').parent().hasClass('active')){
@@ -174,12 +166,8 @@ $('#option5').on('click',function(){
   $('#option5').parent().addClass('active')
   row = 8
   col = 8
-  $click1 = null
-  noClick = false
-  imageSrc = []
-  score = 0
-  $('#score').text('score: 0')
   $('#gameArea > div').remove()
+  imageSrc = []
   createGrid()
   initImage()
   if($('#option2').parent().hasClass('active')){
@@ -192,15 +180,10 @@ $('.glossy').on('click',function(){
   if(noStart)return
   noStart = true
   invalidityClick = false
-  $('#score').text('score: 0')
-  $('#gameArea > div').remove()
   $click1 = null
   noClick = false
   imageSrc = []
   score = 0
-  createGrid()
-  initImage()
-  $('.progress-bar').width('0%')
   $('.backImage').hide()
   if($('#option2').parent().hasClass('active')){
     $('.backImage').css('opacity','0.7')
@@ -218,10 +201,6 @@ $('.playAgain').on('click',function(){
   $('#gameArea > div').remove()
   $('#option1').parent().addClass('active')
   $('#option2').parent().removeClass('active')
-  $click1 = null
-  noClick = false
-  imageSrc = []
-  score = 0
   createGrid()
   initImage()
 })
