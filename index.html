@@ -2,7 +2,7 @@
 * @Author: taochen
 * @Date:   2016-10-17 17:36:49
 * @Last Modified by:   taochen
-* @Last Modified time: 2016-10-25 03:59:12
+* @Last Modified time: 2016-10-25 17:24:43
  -->
 
 
@@ -22,7 +22,12 @@
 </head>
 <body>
   <div id="container">
-    <div class="progress-bar"></div>
+
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+        <span class="sr-only">45% Complete</span>
+      </div>
+    </div>
 
     <div id="mainArea">
 
@@ -65,7 +70,23 @@
       </div>
     </div>
   </div>
-  
+
+  <div class="gameControl gameover">
+    <div class="gameResult" >
+      <img src="./image/gameover.jpg" alt=""> 
+      <p>Sorry,you have lost!</p>
+      <a href="#" data-icon="" class="button green playAgain">Play Again</a>
+    </div>
+  </div>
+
+  <div class="gameControl success">
+    <div class="gameResult" >
+      <img src="./image/success.jpg" alt=""> 
+      <p>congratulations! You have won!</p>
+      <a href="#" data-icon="" class="button green playAgain">Play Again</a>
+    </div>
+  </div>
+
   <script type="text/javascript" src="./js/main.js"></script>
 </body>
 </html>

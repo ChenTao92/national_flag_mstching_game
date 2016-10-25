@@ -2,7 +2,7 @@
 * @Author: taochen
 * @Date:   2016-10-17 17:37:39
 * @Last Modified by:   taochen
-* @Last Modified time: 2016-10-25 05:26:02
+* @Last Modified time: 2016-10-25 18:31:39
 */
 
 var row = 6
@@ -10,9 +10,13 @@ var col = 6
 var $gameArea = $('#gameArea')
 var imageSrc = []
 var $click1
-var noClick = false
-var duration = 1000
+var duration = 1000 //翻牌展现时间
 var score = 0
+var gametime = 20 //游戏允许单个配对最大时间
+var int = 0 //时间进度条计时参数
+var noClick = false //用于防止同时翻开第三张牌
+var noPlay = false //用于控制开始按钮点击是否有效，避免多次快速点击开始按钮造成的bug
+var invalidityClick = true //用于防止在未点击开始按钮之前翻开牌面
 
 function createGrid(){
   const rowSize = $gameArea.width()/row
@@ -33,7 +37,6 @@ function createGrid(){
 function initImage() {
   var imgNum = row * col/2
   for (var i = 0; i < imgNum; i++) {
-    console.log(i)
     var src = './image/flag'+(i%18+1)+'.png'
     imageSrc.push(src)
     imageSrc.push(src)
@@ -52,6 +55,7 @@ function initImage() {
 
 // add listener,在父元素上做事件代理，避免给每个子元素都加事件处理器
 $gameArea.on("click", function(evt) {
+  if (invalidityClick) return
   if (noClick) return
   var $target = $(evt.target)
   if ($target.hasClass('backImage')) {
@@ -60,6 +64,8 @@ $gameArea.on("click", function(evt) {
     if($click1){
       noClick = true
       if($frontImage.attr('src') === $click1.attr('src')){
+        $('.progress-bar').width('0%')
+        int = 0
         setTimeout(function(){
           $frontImage.remove()
           $click1.remove()
@@ -81,6 +87,31 @@ $gameArea.on("click", function(evt) {
     }
   }
 })
+
+// 定义时间进度条功能
+function timer(){
+  var interval = setInterval(function(){
+  int++
+  if (int > gametime) {
+    int = 0
+    clearInterval(interval)
+    $('.gameover').show()
+    $('.progress-bar').width('0%')
+    noPlay = false
+    invalidityClick = true
+    return
+  }
+  $('.progress-bar').width(int*100/gametime+'%')
+  if($('.flagImage').length === 0 ){
+    clearInterval(interval)
+    $('.success').show()
+    $('.progress-bar').width('0%')
+    noPlay = false
+    invalidityClick = true
+  }
+
+  },1000)
+}
 
 // 游戏模式切换
 $('#option1').on('click',function(){
@@ -153,7 +184,42 @@ $('#option5').on('click',function(){
   }
 })
 
+// 开始按钮处理器
+$('.glossy').on('click',function(){
+  if(noPlay)return
+  noPlay = true
+  invalidityClick = false
+  $('#score').text('score:0')
+  $('#gameArea > div').remove()
+  $click1 = null
+  noClick = false
+  imageSrc = []
+  score = 0
+  createGrid()
+  initImage()
+  $('.progress-bar').width('0%')
+  $('.backImage').hide()
+  if($('#option2').parent().hasClass('active')){
+    $('.backImage').css('opacity','0.7')
+  }
+  setTimeout(function(){
+    $('#gameArea .backImage').show()
+    timer()
+  }, 5000)
+})
+
+// playAgain按钮处理器
+$('.playAgain').on('click',function(){
+  $('.gameControl').hide()
+  $('#score').text('score:0')
+  $('#gameArea > div').remove()
+  $click1 = null
+  noClick = false
+  imageSrc = []
+  score = 0
+  createGrid()
+  initImage()
+})
+
 createGrid()
 initImage()
-
-
