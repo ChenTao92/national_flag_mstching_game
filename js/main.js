@@ -2,7 +2,7 @@
 * @Author: taochen
 * @Date:   2016-10-17 17:37:39
 * @Last Modified by:   taochen
-* @Last Modified time: 2016-10-25 18:31:39
+* @Last Modified time: 2016-10-26 01:39:14
 */
 
 var row = 6
@@ -70,7 +70,7 @@ $gameArea.on("click", function(evt) {
           $frontImage.remove()
           $click1.remove()
           score+=10
-          $('#score').text('score:'+ score)
+          $('#score').text('score: '+ score)
           $click1 = null
           noClick = false
         }, duration)
@@ -128,6 +128,7 @@ $('#option2').on('click',function(){
 
 // 难度选择切换
 $('#option3').on('click',function(){
+  if(noPlay)return
   $('#option3').parent().addClass('active')
   $('#option4').parent().removeClass('active')
   $('#option5').parent().removeClass('active')
@@ -137,7 +138,7 @@ $('#option3').on('click',function(){
   noClick = false
   imageSrc = []
   score = 0
-  $('#score').text('score:0')
+  $('#score').text('score: 0')
   $('#gameArea > div').remove()
   createGrid()
   initImage()
@@ -147,6 +148,7 @@ $('#option3').on('click',function(){
 })
 
 $('#option4').on('click',function(){
+  if(noPlay)return
   $('#option3').parent().removeClass('active')
   $('#option4').parent().addClass('active')
   $('#option5').parent().removeClass('active')
@@ -156,7 +158,7 @@ $('#option4').on('click',function(){
   noClick = false
   imageSrc = []
   score = 0
-  $('#score').text('score:0')
+  $('#score').text('score: 0')
   $('#gameArea > div').remove()
   createGrid()
   initImage()
@@ -166,6 +168,7 @@ $('#option4').on('click',function(){
 })
 
 $('#option5').on('click',function(){
+  if(noPlay)return
   $('#option3').parent().removeClass('active')
   $('#option4').parent().removeClass('active')
   $('#option5').parent().addClass('active')
@@ -175,7 +178,7 @@ $('#option5').on('click',function(){
   noClick = false
   imageSrc = []
   score = 0
-  $('#score').text('score:0')
+  $('#score').text('score: 0')
   $('#gameArea > div').remove()
   createGrid()
   initImage()
@@ -184,12 +187,12 @@ $('#option5').on('click',function(){
   }
 })
 
-// 开始按钮处理器
+// 开始play按钮处理器
 $('.glossy').on('click',function(){
   if(noPlay)return
   noPlay = true
   invalidityClick = false
-  $('#score').text('score:0')
+  $('#score').text('score: 0')
   $('#gameArea > div').remove()
   $click1 = null
   noClick = false
@@ -211,8 +214,10 @@ $('.glossy').on('click',function(){
 // playAgain按钮处理器
 $('.playAgain').on('click',function(){
   $('.gameControl').hide()
-  $('#score').text('score:0')
+  $('#score').text('score: 0')
   $('#gameArea > div').remove()
+  $('#option1').parent().addClass('active')
+  $('#option2').parent().removeClass('active')
   $click1 = null
   noClick = false
   imageSrc = []
