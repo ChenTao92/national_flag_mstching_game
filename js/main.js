@@ -2,7 +2,7 @@
 * @Author: taochen
 * @Date:   2016-10-17 17:37:39
 * @Last Modified by:   taochen
-* @Last Modified time: 2016-10-26 01:39:14
+* @Last Modified time: 2016-10-26 02:33:53
 */
 
 var row = 6
@@ -15,7 +15,7 @@ var score = 0
 var gametime = 20 //游戏允许单个配对最大时间
 var int = 0 //时间进度条计时参数
 var noClick = false //用于防止同时翻开第三张牌
-var noPlay = false //用于控制开始按钮点击是否有效，避免多次快速点击开始按钮造成的bug
+var noStart = false //用于控制开始按钮点击是否有效，避免多次快速点击开始按钮造成的bug
 var invalidityClick = true //用于防止在未点击开始按钮之前翻开牌面
 
 function createGrid(){
@@ -97,7 +97,7 @@ function timer(){
     clearInterval(interval)
     $('.gameover').show()
     $('.progress-bar').width('0%')
-    noPlay = false
+    noStart = false
     invalidityClick = true
     return
   }
@@ -106,7 +106,7 @@ function timer(){
     clearInterval(interval)
     $('.success').show()
     $('.progress-bar').width('0%')
-    noPlay = false
+    noStart = false
     invalidityClick = true
   }
 
@@ -128,7 +128,7 @@ $('#option2').on('click',function(){
 
 // 难度选择切换
 $('#option3').on('click',function(){
-  if(noPlay)return
+  if(noStart)return
   $('#option3').parent().addClass('active')
   $('#option4').parent().removeClass('active')
   $('#option5').parent().removeClass('active')
@@ -148,7 +148,7 @@ $('#option3').on('click',function(){
 })
 
 $('#option4').on('click',function(){
-  if(noPlay)return
+  if(noStart)return
   $('#option3').parent().removeClass('active')
   $('#option4').parent().addClass('active')
   $('#option5').parent().removeClass('active')
@@ -168,7 +168,7 @@ $('#option4').on('click',function(){
 })
 
 $('#option5').on('click',function(){
-  if(noPlay)return
+  if(noStart)return
   $('#option3').parent().removeClass('active')
   $('#option4').parent().removeClass('active')
   $('#option5').parent().addClass('active')
@@ -187,10 +187,10 @@ $('#option5').on('click',function(){
   }
 })
 
-// 开始play按钮处理器
+// 开始Start按钮处理器
 $('.glossy').on('click',function(){
-  if(noPlay)return
-  noPlay = true
+  if(noStart)return
+  noStart = true
   invalidityClick = false
   $('#score').text('score: 0')
   $('#gameArea > div').remove()
