@@ -2,7 +2,7 @@
 * @Author: taochen
 * @Date:   2016-10-17 17:37:39
 * @Last Modified by:   taochen
-* @Last Modified time: 2016-10-27 02:59:03
+* @Last Modified time: 2016-10-27 03:55:15
 */
 
 var row = 6
@@ -176,7 +176,7 @@ $('#option5').on('click',function(){
 })
 
 // 开始Play按钮处理器
-$('.glossy').on('click',function(){
+$('.glossy').on('click',function(evt){
   if(noPlay)return
   noPlay = true
   invalidityClick = false
@@ -184,6 +184,8 @@ $('.glossy').on('click',function(){
   noClick = false
   imageSrc = []
   score = 0
+  $('.glossy').css('cursor','default').attr('disabled','disabled')
+  $('#infoArea > :nth-child(7)').children().css('cursor','default').attr('disabled','disabled')
   $('.backImage').hide()
   if($('#option2').parent().hasClass('active')){
     $('.backImage').css('opacity','0.7')
@@ -201,6 +203,8 @@ $('.playAgain').on('click',function(){
   $('#gameArea > div').remove()
   $('#option1').parent().addClass('active')
   $('#option2').parent().removeClass('active')
+  $('.glossy').css('cursor','pointer').removeAttr('disabled','disabled')
+  $('#infoArea > :nth-child(7)').children().css('cursor','pointer').removeAttr('disabled','disabled')
   createGrid()
   initImage()
 })
