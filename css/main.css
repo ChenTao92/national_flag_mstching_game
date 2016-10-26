@@ -12,8 +12,12 @@ body {
   top: 0;
   bottom: 0;
   margin: auto;
-  border: solid 4px #c2d6d6;
   border-radius: 5px;
+}
+.progress {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 #mainArea {
   width: 100%;
@@ -75,6 +79,7 @@ body {
 }
 #infoArea > h3 > #score {
   font-family: Comic Sans MS;
+  text-shadow: 5px 5px 5px #808080;
   color: #fff;
   padding-left: 70px;
   font-size: 27px;
@@ -95,7 +100,6 @@ body {
   top: 22px;
 }
 #infoArea > .glossy {
-  font-family: Trebuchet MS;
   text-decoration: none;
   position: relative;
   left: 30px;

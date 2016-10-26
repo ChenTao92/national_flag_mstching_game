@@ -23,8 +23,8 @@ Following additional class names are supported:
 */
 
 
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans:bold+Lobster);
-@import url(http://fonts.googleapis.com/css?family=Lobster);
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans:bold+Lobster);
+@import url(https://fonts.googleapis.com/css?family=Lobster);
 
 
 /* -------------- THE button -------------- */
@@ -198,7 +198,7 @@ button.button:hover {
 
 
 
-.button:active {
+/*.button:active {
 	background-image: 	-webkit-gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255,255,255,0) ), to( rgba(255,255,255,0) )), url(noise.png);
 	background-image: 	-moz-gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255,255,255,0) ), to( rgba(255,255,255,0) )), url(noise.png);
 	background-image: 	gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255,255,255,0) ), to( rgba(255,255,255,0) )), url(noise.png);
@@ -216,7 +216,7 @@ button.button:hover {
 	-webkit-transform: 	translateY(.2em);
 	-moz-transform: 	translateY(.2em);
 	transform: 			translateY(.2em);
-}
+}*/
 
 .button:focus {
 	outline: none;
