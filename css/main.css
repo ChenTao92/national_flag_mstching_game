@@ -2,6 +2,7 @@ body {
   background-image: url("../image/bg.jpg");
   background-size: cover;
   font-family: "Overlock", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  height: 100vh;
 }
 #container {
   position: absolute;
